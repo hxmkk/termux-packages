@@ -9,7 +9,7 @@ TERMUX_PKG_SRCURL=https://github.com/twaik/xorg-input-mtev/archive/${TERMUX_PKG_
 TERMUX_PKG_SHA256=faecee79322b82c56b35422be3077f7c85a6d16d5ed8e3b3be809b7e765dd4ae
 TERMUX_PKG_DEPENDS="mtdev, xorg-server"
 TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_NO_STATICSPLIT=false
+
 TERMUX_PKG_BLACKLISTED_ARCHES="i686"
 
 termux_step_make() {
