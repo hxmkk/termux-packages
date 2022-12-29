@@ -1,0 +1,18 @@
+--- ./src/dummy_driver.c.old	2022-12-29 05:24:36.138469756 +0000
++++ ./src/dummy_driver.c	2022-12-29 05:25:35.434469733 +0000
+@@ -703,15 +703,6 @@
+     /* If monitor resolution is set on the command line, use it */
+     xf86SetDpi(pScrn, 0, 0);
+ 
+-    if (xf86LoadSubModule(pScrn, "fb") == NULL) {
+-	RETURN;
+-    }
+-
+-    if (!dPtr->swCursor) {
+-	if (!xf86LoadSubModule(pScrn, "ramdac"))
+-	    RETURN;
+-    }
+-    
+     /* We have no contiguous physical fb in physical memory */
+     pScrn->memPhysBase = 0;
+     pScrn->fbOffset = 0;
