@@ -3,6 +3,7 @@ TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_HOMEPAGE=https://github.com/twaik/xorg-input-mtev
 TERMUX_PKG_DESCRIPTION="X.org mtev input driver"
 TERMUX_PKG_VERSION=1.0
+TERMUX_PKG_LICENSE=custom
 TERMUX_PKG_SRCURL=https://github.com/twaik/xorg-input-mtev/archive/${TERMUX_PKG_VERSION}.tar.gz
 TERMUX_PKG_SHA256=faecee79322b82c56b35422be3077f7c85a6d16d5ed8e3b3be809b7e765dd4ae
 TERMUX_PKG_DEPENDS="mtdev, xorg-server"
