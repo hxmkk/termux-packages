@@ -1,0 +1,13 @@
+diff -ruN qtbase-everywhere-src-5.15.7/src/corelib/configure.json qtbase-mod/src/corelib/configure.json
+--- qtbase-everywhere-src-5.15.7/src/corelib/configure.json	2021-12-22 12:26:00.000000000 +0000
++++ qtbase-mod/src/corelib/configure.json	2022-12-31 11:57:19.746580245 +0000
+@@ -354,8 +354,7 @@
+                 "main": [
+                     "std::future<int> f = std::async([]() { return 42; });",
+                     "(void)f.get();"
+-                ],
+-                "qmake": "unix:LIBS += -lpthread"
++                ]
+             }
+         },
+         "cxx11_random": {
