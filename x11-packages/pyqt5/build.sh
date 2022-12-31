@@ -5,8 +5,8 @@ TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION=5.15.7
 TERMUX_PKG_SRCURL=https://ftp-osl.osuosl.org/pub/gentoo/distfiles/PyQt5-${TERMUX_PKG_VERSION}.tar.gz
 TERMUX_PKG_SHA256=755121a52b3a08cb07275c10ebb96576d36e320e572591db16cfdbc558101594
-TERMUX_PKG_DEPENDS="libc++, python, qt5-qtbase, qt5-qtdeclarative, qt5-qtlocation, qt5-qtmultimedia, qt5-qtsensors, qt5-qtsvg, qt5-qttools, qt5-qtwebchannel, qt5-qtwebkit, qt5-qtwebsockets, qt5-qtx11extras, qt5-qtxmlpatterns, mesa"
-TERMUX_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qtdeclarative-cross-tools, qt5-qttools-cross-tools, mesa-dev"
+TERMUX_PKG_DEPENDS="libc++, python, qt5-qtbase, qt5-qtdeclarative, qt5-qtlocation, qt5-qtmultimedia, qt5-qtsensors, qt5-qtsvg, qt5-qttools, qt5-qtwebchannel, qt5-qtwebkit, qt5-qtwebsockets, qt5-qtx11extras, qt5-qtxmlpatterns"
+TERMUX_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qtdeclarative-cross-tools, qt5-qttools-cross-tools"
 TERMUX_PKG_BUILD_IN_SRC=true
 TERMUX_PKG_EXTRA_MAKE_ARGS="
 --verbose
@@ -30,7 +30,7 @@ TERMUX_PKG_EXTRA_MAKE_ARGS="
 #			      ^
 # 3 errors generated.
 # ```
-#TERMUX_PKG_EXTRA_MAKE_ARGS+=" --disable=QtQuick"
+TERMUX_PKG_EXTRA_MAKE_ARGS+=" --disable=QtQuick"
 
 termux_step_pre_configure() {
 	_PYTHON_VERSION=$(. $TERMUX_SCRIPTDIR/packages/python/build.sh; echo $_MAJOR_VERSION)
