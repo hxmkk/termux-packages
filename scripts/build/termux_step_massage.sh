@@ -84,12 +84,19 @@ termux_step_massage() {
 		termux_error_exit "Package contains hard links: $HARDLINKS"
 	fi
 
+	# Check for directory "$PREFIX/$PREFIX" which almost always indicates
+	# packaging error.
+	if [ -d "./${TERMUX_PREFIX#/}" ]; then
+		termux_error_exit "Package contains directory \"\$PREFIX/\$PREFIX\" ($TERMUX_PREFIX/${TERMUX_PREFIX#/})"
+	fi
+
 	# Check so that package is not affected by
 	# https://github.com/android/ndk/issues/1614, or
 	# https://github.com/termux/termux-packages/issues/9944
 	if [ -d "lib" ]; then
 		SYMBOLS="$($READELF -s $($TERMUX_HOST_PLATFORM-clang -print-libgcc-file-name) | grep "FUNC    GLOBAL HIDDEN" | awk '{print $8}')"
 		SYMBOLS+=" $(echo libandroid_{sem_{open,close,unlink},shm{ctl,get,at,dt}})"
+		SYMBOLS+=" $(echo backtrace{,_symbols{,_fd}})"
 		grep_pattern="$(create_grep_pattern $SYMBOLS)"
 		for lib in "$(find lib -name "*.so")"; do
 			if ! $READELF -h "$lib" &> /dev/null; then
@@ -107,7 +114,7 @@ termux_step_massage() {
 		termux_create_pacman_subpackages
 	fi
 
-	# Remove unnecessary files in haskell pacakges:
+	# Remove unnecessary files in haskell packages:
 	if [[ "${TERMUX_PKG_NAME}" != "ghc-libs" ]] && [[ "${TERMUX_PKG_NAME}" != "ghc" ]]; then
 		test -d ./lib/ghc-* && rm -rf ./lib/ghc-* 2>/dev/null # Remove full ghc-* dir since cross compiler installs packages in "./lib/${TERMUX_ARCH}-android-ghc-X.Y.Z"
 	fi

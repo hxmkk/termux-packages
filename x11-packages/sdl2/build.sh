@@ -2,9 +2,9 @@ TERMUX_PKG_HOMEPAGE=https://www.libsdl.org
 TERMUX_PKG_DESCRIPTION="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (version 2)"
 TERMUX_PKG_LICENSE="ZLIB"
 TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION="2.26.0"
+TERMUX_PKG_VERSION="2.26.2"
 TERMUX_PKG_SRCURL=https://www.libsdl.org/release/SDL2-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=8000d7169febce93c84b6bdf376631f8179132fd69f7015d4dadb8b9c2bdb295
+TERMUX_PKG_SHA256=95d39bc3de037fbdfa722623737340648de4f180a601b0afad27645d150b99e0
 TERMUX_PKG_DEPENDS="libx11, libxcursor, libxext, libxfixes, libxi, libxrandr, libxss, pulseaudio"
 TERMUX_PKG_BUILD_DEPENDS="mesa"
 TERMUX_PKG_RECOMMENDS="mesa"
@@ -34,6 +34,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-video-vivante
 --disable-video-cocoa
 --disable-render-metal
+--disable-video-kmsdrm
 --enable-video-opengl
 --disable-video-opengles
 --disable-video-opengles2
